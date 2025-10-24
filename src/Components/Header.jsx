@@ -5,7 +5,7 @@ import { Github } from "lucide-react";
 
 const Header = () => {
   return (
-    <div>
+    <header>
       <div className="navbar bg-base-100 shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
@@ -58,16 +58,17 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn text-white rounded-md bg-[linear-gradient(125.07deg,rgba(99,46,227,1),rgba(159,98,242,1)_100%)]">
+          <a
+            href="https://github.com/shuvo2712"
+            target="_blank"
+            className="btn text-white rounded-md bg-[linear-gradient(125.07deg,rgba(99,46,227,1),rgba(159,98,242,1)_100%)]"
+          >
             <Github />
             Contribute
           </a>
         </div>
       </div>
-
-      <h1 className="h-40 text-3xl font-bold text-center mt-10">
-This is header      </h1>
-    </div>
+    </header>
   );
 };
 

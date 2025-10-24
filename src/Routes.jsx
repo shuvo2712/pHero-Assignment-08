@@ -7,7 +7,7 @@ const Routes = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-    errorElement: <ErrorPage></ErrorPage>
+    // errorElement: <ErrorPage></ErrorPage>
   },
 ]);
 

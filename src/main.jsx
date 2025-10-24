@@ -8,6 +8,6 @@ import Routes from "./Routes";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={Routes} />,
+    <RouterProvider router={Routes} />
   </StrictMode>
 );
