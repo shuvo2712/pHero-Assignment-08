@@ -1,27 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import { Outlet } from "react-router";
-import HomePage from "./Components/HomePage";
+import { Outlet } from "react-router-dom";
 
 const Root = () => {
-  const [apps, setApps] = useState([]);
-
-  useEffect(() => {
-    fetch("/appsData.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setApps(data);
-      })
-      .catch((err) => console.error("Error fetching apps:", err));
-  }, []);
 
   return (
-    <div>
+    <div className="max-w-6xl mx-auto">
       <Header></Header>
-      <HomePage
-        apps={apps}
-      ></HomePage>
+      <Outlet></Outlet>
       <Footer></Footer>
     </div>
   );

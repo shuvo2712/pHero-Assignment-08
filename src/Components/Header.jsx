@@ -1,9 +1,44 @@
 import React from "react";
 import logo from "../assets/logo.png";
 import { Github } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 
 const Header = () => {
+  const links = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "text-violet-700 underline" : ""
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/apps"
+          className={({ isActive }) =>
+            isActive ? "text-violet-700 underline" : ""
+          }
+        >
+          Apps
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/installation"
+          className={({ isActive }) =>
+            isActive ? "text-violet-700 underline" : ""
+          }
+        >
+          Installation
+        </NavLink>
+      </li>
+    </>
+  );
   return (
     <header>
       <div className="navbar bg-base-100 shadow-sm">
@@ -30,15 +65,8 @@ const Header = () => {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a>Home</a>
-              </li>
-              <li>
-                <a>Apps</a>
-              </li>
-              <li>
-                <a>Installation</a>
-              </li>
+              {/* links */}
+              {links}
             </ul>
           </div>
           <img className="w-[40px]" src={logo} alt="" />
@@ -46,15 +74,8 @@ const Header = () => {
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Home</a>
-            </li>
-            <li>
-              <a>Apps</a>
-            </li>
-            <li>
-              <a>Installation</a>
-            </li>
+            {/* links */}
+            {links}
           </ul>
         </div>
         <div className="navbar-end">
