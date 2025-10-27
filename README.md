@@ -5,4 +5,5 @@
 + TailwindCSS
 + DaisyUi
 + Lucide Icons
-+ React Router
++ React Router Dom
++ Recharts
