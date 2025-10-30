@@ -7,3 +7,4 @@
 + Lucide Icons
 + React Router Dom
 + Recharts
++ Toastify

@@ -2,9 +2,14 @@ import React from "react";
 import { Star, Download, File } from "lucide-react";
 import { useContext } from "react";
 import { InstallContext } from "../Context/InstallContext";
+import { ToastContainer, toast } from "react-toastify";
 
 const InstalledApp = ({ app }) => {
   const { uninstallApp } = useContext(InstallContext);
+  const handleUninstall = () => {
+    toast(`${app.title} has been uninstalled successfully!`);
+    uninstallApp(app);
+  };
 
   return (
     <div className="bg-white rounded-lg shadow p-3 flex items-center justify-between">
@@ -36,10 +41,11 @@ const InstalledApp = ({ app }) => {
         </div>
       </div>
       <button
-        onClick={() => uninstallApp(app.id)}
+        onClick={handleUninstall}
         className="btn bg-green-500 text-white hover:bg-green-600 px-4 py-2 rounded"
       >
         Uninstall
+      <ToastContainer />
       </button>
     </div>
   );

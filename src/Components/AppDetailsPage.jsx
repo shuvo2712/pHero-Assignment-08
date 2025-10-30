@@ -13,6 +13,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
+import { ToastContainer, toast } from "react-toastify";
 
 const AppDetailsPage = () => {
   const app = useLoaderData();
@@ -27,7 +28,7 @@ const AppDetailsPage = () => {
   const handleInstall = () => {
     installApp(app);
     setIsInstalled(true);
-    alert(`${app.title} has been installed successfully!`);
+    toast(`${app.title} has been installed successfully!`);
   };
 
   // app not found
@@ -110,6 +111,7 @@ const AppDetailsPage = () => {
           >
             {isInstalled ? "Installed" : "Install Now"}
           </button>
+          <ToastContainer />
         </div>
       </section>
 

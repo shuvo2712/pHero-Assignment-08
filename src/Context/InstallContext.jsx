@@ -24,8 +24,8 @@ export const InstallProvider = ({ children }) => {
   };
 
   // Uninstall app
-  const uninstallApp = (id) => {
-    setInstalledApps((prev) => prev.filter((a) => a.id !== id));
+  const uninstallApp = (app) => {
+    setInstalledApps((prev) => prev.filter((a) => a.id !== app.id));
   };
 
 
