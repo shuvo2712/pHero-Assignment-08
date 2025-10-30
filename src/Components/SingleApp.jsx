@@ -2,7 +2,7 @@ import React from "react";
 import { Star, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const App = ({ app }) => {
+const SingleApp = ({ app }) => {
   return (
     <Link to={`/apps/${app.id}`}>
       <div className="bg-white rounded-md p-2 flex flex-col items-center shadow-lg cursor-pointer hover:shadow-2xl hover:scale-105 transition-shadow duration-300">
@@ -20,7 +20,7 @@ const App = ({ app }) => {
         <div className="flex justify-between w-full text-xs text-gray-500 mt-auto">
           <div className="flex items-center gap-1">
             <Download className="w-3 h-3 text-green-500" />
-            <span>{app.downloads / 1000000}M</span>
+            <span>{(app.downloads / 1_000_000).toFixed(1)}M</span>
           </div>
           <div className="flex items-center gap-1">
             <Star className="w-3 h-3 text-orange-500" />
@@ -32,4 +32,4 @@ const App = ({ app }) => {
   );
 };
 
-export default App;
+export default SingleApp;

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import App from "./App";
 import { Search } from "lucide-react";
+import SingleApp from "./SingleApp";
 
 const AppsPage = () => {
   const apps = useLoaderData();
   const [searchTerm, setSearchTerm] = useState("");
 
-  // ✅ CHANGED: removed sortBy and sorting logic
   const filteredApps = apps.filter((app) =>
     app.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -24,7 +23,7 @@ const AppsPage = () => {
           </p>
         </div>
 
-        {/* Apps, Search */}
+        {/* {} Apps, Search */}
         <div className="flex justify-between py-5">
           <div>
             <h4 className="font-semibold">
@@ -47,7 +46,7 @@ const AppsPage = () => {
         {filteredApps.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {filteredApps.map((app) => (
-              <App app={app} key={app.id} />
+              <SingleApp app={app} key={app.id}></SingleApp>
             ))}
           </div>
         ) : (

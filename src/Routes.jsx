@@ -25,17 +25,17 @@ const Routes = createBrowserRouter([
         index: true,
         path: "/",
         element: <HomePage />,
-        loader: () => fetch("/appsData.json"),
+        loader: () => fetch("/appsData.json").then(res => res.json()),
       },
       {
         path: "apps",
         element: <AppsPage />,
-        loader: () => fetch("/appsData.json"),
+        loader: () => fetch("/appsData.json").then(res => res.json()),
       },
       {
         path: "installation",
         element: <InstallationPage />,
-        loader: () => fetch("/appsData.json"),
+        loader: () => fetch("/appsData.json").then(res => res.json()),
       },
       {
         path: "apps/:id",
@@ -43,10 +43,7 @@ const Routes = createBrowserRouter([
         loader: async ({ params }) => {
           const res = await fetch("/appsData.json");
           const apps = await res.json();
-          const app = apps.find(
-            (a) => a.id === parseInt(params.id) || a.id === params.id
-          );
-          // ✅ Instead of throwing, return null to handle gracefully inside page
+          const app = apps.find((a) => a.id === parseInt(params.id));
           return app || null;
         },
       },

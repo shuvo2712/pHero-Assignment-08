@@ -1,6 +1,9 @@
 import React from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Star, Download, MessageCircle } from "lucide-react";
+import notFoundImg from "../assets/App-Error.png";
+import { useContext } from "react";
+import { InstallContext } from "../Context/InstallContext";
 import {
   BarChart,
   Bar,
@@ -14,15 +17,27 @@ import {
 const AppDetailsPage = () => {
   const app = useLoaderData();
   const navigate = useNavigate();
+  const { installApp } = useContext(InstallContext);
+
+  // handle install app
+  const handleInstallApp = () => {
+    installApp(app);
+    alert(`${app.title} has been installed successfully!`);
+  };
 
   // app not found
   if (!app) {
     return (
       <div className="p-10 text-center">
-        <h2 className="mb-4 text-red-500">App not found!</h2>
+        <img src={notFoundImg} alt="" className="mx-auto" />
+        <h2 className="my-4 text-red-500">OOPS! App not found!</h2>
+        <p>
+          The App you are requesting is not found in our system. Please try
+          another apps.
+        </p>
         <button
           onClick={() => navigate(-1)}
-          className="btn bg-violet-500 text-white"
+          className="btn bg-violet-500 text-white mt-4"
         >
           Go Back
         </button>
@@ -45,7 +60,7 @@ const AppDetailsPage = () => {
           <img
             src={app.image}
             alt={app.title}
-            className="w-50 object-cover rounded-md"
+            className="w-52 object-cover rounded-md"
           />
         </div>
 
@@ -79,8 +94,11 @@ const AppDetailsPage = () => {
           </section>
 
           {/* button */}
-          <button className="btn bg-green-500 text-white hover:bg-gradient-to-r from-violet-600 to-purple-500 mt-3">
-            Install Now ({app.size})
+          <button
+            onClick={handleInstallApp}
+            className="btn bg-green-500 text-white hover:bg-gradient-to-r from-violet-600 to-purple-500 mt-3"
+          >
+            Install Now ({app.size} MB)
           </button>
         </div>
       </section>
