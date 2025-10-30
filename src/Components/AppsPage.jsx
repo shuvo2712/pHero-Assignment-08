@@ -12,39 +12,36 @@ const AppsPage = () => {
   );
 
   return (
-    <div className="bg-[#F1F5E8] py-10">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center">
-          <h1 className="mb-2">Our All Applications</h1>
-          <p className="text-gray-500">
-            Explore All Apps on the Market developed by us. We code for
-            Millions.
-          </p>
-        </div>
+    <div className="bg-[#F1F5E8] p-10">
+      {/* Header */}
+      <div className="text-center">
+        <h1 className="mb-2">Our All Applications</h1>
+        <p>
+          Explore All Apps on the Market developed by us. We code for Millions.
+        </p>
+      </div>
 
-        {/* {} Apps, Search */}
-        <div className="flex justify-between py-5">
-          <div>
-            <h4 className="font-semibold">
-              ({filteredApps.length}) Apps Found
-            </h4>
-          </div>
-          {/* Search Bar */}
-          <div className="input flex items-center">
-            <Search />
-            <input
-              type="text"
-              placeholder="Search Apps"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
+      {/* {} Apps, Search */}
+      <div className="flex justify-between items-center py-5">
+        <div>
+          <h4>({filteredApps.length}) Apps Found</h4>
         </div>
+        {/* Search Bar */}
+        <div className="input flex items-center">
+          <Search />
+          <input
+            type="text"
+            placeholder="Search Apps"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
 
-        {/* Apps Grid */}
+      {/* Apps Grid */}
+      <div>
         {filteredApps.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-5">
             {filteredApps.map((app) => (
               <SingleApp app={app} key={app.id}></SingleApp>
             ))}

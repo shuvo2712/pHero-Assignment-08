@@ -39,6 +39,7 @@ const Header = () => {
       </li>
     </>
   );
+  
   return (
     <header>
       <div className="navbar bg-base-100 shadow-sm">
@@ -70,7 +71,9 @@ const Header = () => {
             </ul>
           </div>
           <img className="w-[40px]" src={logo} alt="" />
-          <a className="btn btn-ghost text-xl">HERO.IO</a>
+          <a
+            href="/"
+            className="btn btn-ghost text-xl">HERO.IO</a>
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">

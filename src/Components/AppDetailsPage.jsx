@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { Star, Download, MessageCircle } from "lucide-react";
+import { Star, Download, MessageCircle, Check } from "lucide-react";
 import notFoundImg from "../assets/App-Error.png";
 import { useContext } from "react";
 import { InstallContext } from "../Context/InstallContext";
@@ -17,11 +17,16 @@ import {
 const AppDetailsPage = () => {
   const app = useLoaderData();
   const navigate = useNavigate();
-  const { installApp } = useContext(InstallContext);
+  const { installApp, installedApps } = useContext(InstallContext);
+
+  // check if already installed
+  const isAlreadyInstalled = installedApps.some((a) => a.id === app.id);
+  const [isInstalled, setIsInstalled] = useState(isAlreadyInstalled);
 
   // handle install app
-  const handleInstallApp = () => {
+  const handleInstall = () => {
     installApp(app);
+    setIsInstalled(true);
     alert(`${app.title} has been installed successfully!`);
   };
 
@@ -95,10 +100,15 @@ const AppDetailsPage = () => {
 
           {/* button */}
           <button
-            onClick={handleInstallApp}
-            className="btn bg-green-500 text-white hover:bg-gradient-to-r from-violet-600 to-purple-500 mt-3"
+            onClick={handleInstall}
+            disabled={isInstalled}
+            className={`px-6 py-2 rounded text-white transition ${
+              isInstalled
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-green-500 hover:bg-green-600"
+            }`}
           >
-            Install Now ({app.size} MB)
+            {isInstalled ? "Installed" : "Install Now"}
           </button>
         </div>
       </section>

@@ -5,7 +5,7 @@ export const InstallContext = createContext();
 export const InstallProvider = ({ children }) => {
   const [installedApps, setInstalledApps] = useState([]);
 
-  // Load installed apps from localStorage
+  // Load installed apps from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem("installedApps");
     if (saved) setInstalledApps(JSON.parse(saved));
