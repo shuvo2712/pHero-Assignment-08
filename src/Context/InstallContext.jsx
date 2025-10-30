@@ -1,6 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
 
-export const InstallContext = createContext();
+export const InstallContext = createContext({
+  installedApps: [],
+  installApp: () => {},
+  uninstallApp: () => {},
+});
 
 export const InstallProvider = ({ children }) => {
   const [installedApps, setInstalledApps] = useState([]);
