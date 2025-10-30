@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import InstalledApp from "./InstalledApp";
 import { InstallContext } from "../Context/InstallContext";
+import { ToastContainer } from "react-toastify";
 
 const InstallationPage = () => {
   const { installedApps } = useContext(InstallContext);
@@ -35,9 +36,7 @@ const InstallationPage = () => {
       {/* {} Apps, Sort by */}
       <div className="flex justify-between items-center py-5">
         <div>
-          <h4>
-            ({sortedApps.length}) Apps Installed
-          </h4>
+          <h4>({sortedApps.length}) Apps Installed</h4>
         </div>
         {/* Sort By */}
         <div>
@@ -52,22 +51,26 @@ const InstallationPage = () => {
           </select>
         </div>
       </div>
-      
+
       {/* Installed apps */}
       <div>
         {/* DYNAMIC DATA */}
         {sortedApps.length === 0 ? (
           <div className="text-center py-20">
             <h3 className="text-gray-500">
-              <i className="fa-solid fa-triangle-exclamation"></i> No App Installed
+              <i className="fa-solid fa-triangle-exclamation"></i> No App
+              Installed
             </h3>
           </div>
         ) : (
-            <div className="space-y-4 px-5">
-              {sortedApps.map((app) => <InstalledApp app={app} key={app.id} />)}
-            </div>
+          <div className="space-y-4 px-5">
+            {sortedApps.map((app) => (
+              <InstalledApp app={app} key={app.id} />
+            ))}
+          </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };
