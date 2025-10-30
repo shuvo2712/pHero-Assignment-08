@@ -62,6 +62,7 @@ const AppDetailsPage = () => {
     <div className="bg-[#F1F5E8] p-10">
       {/* image and stats */}
       <section className="flex gap-5 items-center">
+        {/* image */}
         <div>
           <img
             src={app.image}
@@ -69,7 +70,7 @@ const AppDetailsPage = () => {
             className="w-52 object-cover rounded-md"
           />
         </div>
-
+        {/* stats and download btn */}
         <div>
           <h4>{app.title}</h4>
           <p>
@@ -103,7 +104,7 @@ const AppDetailsPage = () => {
           <button
             onClick={handleInstall}
             disabled={isInstalled}
-            className={`px-6 py-2 rounded text-white transition ${
+            className={`px-6 py-2 mt-3 rounded text-white transition ${
               isInstalled
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-green-500 hover:bg-green-600"
@@ -111,7 +112,6 @@ const AppDetailsPage = () => {
           >
             {isInstalled ? "Installed" : "Install Now"}
           </button>
-          <ToastContainer />
         </div>
       </section>
 
@@ -141,6 +141,7 @@ const AppDetailsPage = () => {
       {/* description */}
       <h6>Description</h6>
       <p className="py-2">{app.description}</p>
+      <ToastContainer />
     </div>
   );
 };

@@ -11,10 +11,10 @@ const InstallationPage = () => {
   // Always sync sortedApps with installedApps
   useEffect(() => {
     let sorted = [...installedApps];
-    if (sortBy === "size") {
-      sorted.sort((a, b) => a.size - b.size);
-    } else if (sortBy === "rating") {
-      sorted.sort((a, b) => b.ratingAvg - a.ratingAvg);
+    if (sortBy === "highToLow") {
+      sorted.sort((a, b) => b.downloads - a.downloads);
+    } else if (sortBy === "lowToHigh") {
+      sorted.sort((a, b) => a.downloads - b.downloads);
     }
     setSortedApps(sorted);
   }, [installedApps, sortBy]);
@@ -46,8 +46,8 @@ const InstallationPage = () => {
             onChange={handleSortChange}
           >
             <option value="default">Sort By Default</option>
-            <option value="size">Sort By Size</option>
-            <option value="rating">Sort By Rating</option>
+            <option value="highToLow">Sort by Downloads (High-Low)</option>
+            <option value="lowToHigh">Sort by Downloads (Low-High)</option>
           </select>
         </div>
       </div>
